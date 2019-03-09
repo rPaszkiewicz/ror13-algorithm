@@ -9,12 +9,15 @@ public class Main {
 
        for (int i=0; i<=string.length()-1; i++) {
            encrypted += string.codePointAt(i) + 13;
-           int codePoint = Integer.parseInt(encrypted.substring(0,string.length()));
-           char[] ch = Character.toChars(codePoint);                                // is this variable needed ?
 
-           for (char c : ch)                                                        // Character.toChars can be written here
-               System.out.println(c);
        }
+       int codePoint = Integer.parseInt(encrypted.substring(0,2));
+       int codePoint1 = Integer.parseInt((encrypted.substring(2,4)));
+        System.out.println(encrypted);
+        for (char c : Character.toChars(codePoint))
+            System.out.println(c);
+        for (char c : Character.toChars(codePoint1))
+            System.out.println(c);
 
     }
 
