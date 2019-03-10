@@ -1,24 +1,27 @@
 package com.justRandomStuff;
 
+import java.util.Scanner;
+
 public class Main {
 
-    public static void main(String[] args) throws ArrayIndexOutOfBoundsException{
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
 
-       String string = "AB";
-       String encrypted = "";
-
-       for (int i=0; i<=string.length()-1; i++) {
-           encrypted += string.codePointAt(i) + 13;
-
-       }
-       int codePoint = Integer.parseInt(encrypted.substring(0,2));
-       int codePoint1 = Integer.parseInt((encrypted.substring(2,4)));
-        System.out.println(encrypted);
-        for (char c : Character.toChars(codePoint))
-            System.out.println(c);
-        for (char c : Character.toChars(codePoint1))
-            System.out.println(c);
-
+        System.out.println("Word to encrypt or decrypt:");
+        String word = reader.nextLine();
+        rot13(word);
+    }
+    public static void rot13(String input) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if       (c >= 'a' && c <= 'm') c += 13;
+            else if  (c >= 'A' && c <= 'M') c += 13;
+            else if  (c >= 'n' && c <= 'z') c -= 13;
+            else if  (c >= 'N' && c <= 'Z') c -= 13;
+            sb.append(c);
+        }
+        System.out.println("Message: " + input + " encrypted to: " + sb.toString());
     }
 
 }
